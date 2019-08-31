@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>兑换屋</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/main.css" rel='stylesheet' type='text/css'/>
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="row">
+            <div class="col-xs-3">
+                <a href="/account/space">
+                    <img src="/images/icon/home.png">
+                </a>
+            </div>
+            <div class="col-xs-6">
+                兑换屋
+            </div>
+            <div class="col-xs-3">
+                <img src="/images/icon/menu.png" id="in" class="menu">
+            </div>
+        </div>
+        <div id="div1" class="navbar-hidden"><a
+                href="/shop/prize">兑换屋</a></div>
+        <div id="div2" class="navbar-hidden"><a
+                href="/point/details">贝化值明细</a></div>
+        <div id="div3" class="navbar-hidden"><a
+                href="/notice/notice">系统公告</a></div>
+        <div id="div4" class="navbar-hidden"><a
+                href="/account/info">个人信息</a></div>
+        <div id="div5" class="navbar-hidden"><a
+                href="/notice/talk">意见反馈</a></div>
+        <div id="div6" class="navbar-hidden"><a
+                href="/account/password">修改密码</a></div>
+        <div id="div7" class="navbar-hidden"><a
+                href="/account/logout">退出登录</a></div>
+    </div>
+
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+
+
+        <div class="col-xs-6" th:each="prize:${prizeList}" th:unless="${prize.state} == 0">
+            <div th:unless="${prize.state} == 0" class="goods">
+                <a th:href="@{/shop/detail(id=${prize.id})}"><img class="prize_img" th:src="'/out_images/'+${prize.img}">
+                    <label class="goods-title" th:text="${prize.prize_name}">商品123456</label></a>
+                <span class="price" id="price" th:text="${prize.point}">1000</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+    </div>
+</div>
+</body>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+<script src="/js/jQuery.js"></script>
+<script src="/js/main.js"></script>
+</html>

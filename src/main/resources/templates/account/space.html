@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>蛋仔的窝</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/main.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="/css/carousel.css">
+    <link rel="stylesheet" href="/css/jquery-confirm.min.css">
+
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+
+</head>
+<body>
+<div class="container">
+    <div class="navbar" style="margin-bottom: 0px">
+        <div class="row">
+            <div class="col-xs-3">
+
+            </div>
+            <div class="col-xs-6">
+                蛋仔主页
+            </div>
+
+            <div class="col-xs-3">
+                <img src="/images/icon/menu.png" id="in" class="menu">
+            </div>
+        </div>
+        <div id="div4" class="navbar-hidden"><a
+                href="https://space.bilibili.com/364225566/" th:text="'战斗吧歌姬官方账号 粉丝数(实时):'+${bgf.fans}"></a></div>
+        <div id="div5" class="navbar-hidden"><a
+                href="https://space.bilibili.com/2315820/" th:text="'伊莎贝拉粉丝应援会 粉丝数(实时):'+${bhyh.fans}"></a></div>
+        <div id="div6" class="navbar-hidden"><a
+                target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bMYdRg">沙雕群友在线咨询</a></div>
+        <div id="div7" class="navbar-hidden"><a
+                href="/account/logout">退出登录</a></div>
+    </div>
+    <!--<div class="head-img">-->
+    <!--<a href="/account/info"><img src="/images/logo.jpg" class="img-responsive"></a>-->
+    <!--</div>-->
+
+    <div id="demo" class="carousel" data-ride="carousel">
+        <!-- 指示符 -->
+        <!--<ul class="carousel-indicators">-->
+            <!--<li data-target="#demo" data-slide-to="0" class="active"></li>-->
+            <!--<li data-target="#demo" data-slide-to="1"></li>-->
+            <!--<li data-target="#demo" data-slide-to="2"></li>-->
+        <!--</ul>-->
+
+        <!-- 轮播图片 -->
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <a target="_blank" href="https://www.bilibili.com/read/cv2688304"><img src="/images/01.jpg"></a>
+            </div>
+
+            <div class="carousel-item" th:each="banner:${bannerList}">
+                <a target="_blank" th:href="${banner.url}" th:title="${banner.event_title}"><img th:src="'/out_images/'+${banner.img}" th:alt="${banner.event_alt}"></a>
+            </div>
+
+            <div class="carousel-item" th:each="xcxData:${xcxDataList}">
+                <a target="_blank"><img class="tips" id="tips" th:src="${xcxData.img_url}"></a>
+            </div>
+
+        </div>
+
+        <!-- 左右切换按钮 -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <div class="col-lg-4">
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="head-name">
+            <h2 th:text="${account.name}">xxxx</h2>
+            <h4 th:if="${account.name} == ''"><a href="/account/info">没有昵称？点击此处添加昵称</a></h4>
+            <h4 th:if="${account.name} == null"><a href="/account/info">新蛋仔点击此处添加昵称</a></h4>
+
+            <h5 class="idtype0" id="idtype0" th:if="${account.state} == '0'">功能受限(点此查看详情)</h5>
+            <h5 class="idtype1" id="idtype1" th:if="${account.state} == '1'">正式账号</h5>
+            <h5 class="idtype2" id="idtype2" th:if="${account.state} == '2'">账号待处理</h5>
+            <h5 class="idtype3" id="idtype3" th:if="${account.state} == '3'">奖品兑换中</h5>
+            <h3><span class="coin" id="coin" th:text="${account.point}">1000</span> 贝化值</h3>
+        </div>
+
+        <!--<div class="space body-special">-->
+            <!--<h4><span class="special" id="special"></span><a-->
+                    <!--target="_blank" href="https://m.rrxiu.net/?v=rg5yrc&mv=1">贝拉生日快乐</a></h4>-->
+        <!--</div>-->
+
+        <div class="space body-price ">
+            <h4><span class="banana" id="banana"></span><a
+                    href="/shop/prize">兑换屋</a><img
+                    src="/images/icon/point.png"></h4>
+        </div>
+        <div class="space body-details">
+            <h4><span class="bananatwo" id="bananatwo"></span><a href="/point/details">
+                贝化值明细</a><img
+                    src="/images/icon/point.png"></h4>
+        </div>
+
+        <div class="space body-activity">
+            <h4><span class="activity" id="activity"></span><a href="#">
+                活动与众筹</a><img
+                    src="/images/icon/point.png"></h4>
+        </div>
+
+        <div class="space body-gallery">
+            <h4><span class="gallery" id="gallery"></span><a href="#">
+                二创作品墙</a><img
+                    src="/images/icon/point.png"></h4>
+        </div>
+
+        <div class="space body-memory">
+            <h4><span class="memory" id="memory"></span><a href="#">
+                纪念馆</a><img
+                    src="/images/icon/point.png"></h4>
+        </div>
+
+        <div class="space2">
+            <h4><span class="block"></span></h4>
+        </div>
+
+        <div class="space foot-Notice">
+            <h4><span class="email" id="email"></span><a
+                    href="/notice/notice">系统公告</a><img
+                    src="/images/icon/point.png"></h4>
+        </div>
+        <div class="space foot-Setup">
+            <h4><span class="gear" id="gear"></span><a href="/account/info">
+                个人信息</a><img src="/images/icon/point.png"></h4>
+        </div>
+
+        <div class="space foot-lock">
+            <h4><span class="lock" id="lock"></span><a href="/account/password">
+                修改密码</a><img src="/images/icon/point.png"></h4>
+        </div>
+        <div class="space foot-talk">
+            <h4><span class="talk" id="talk"></span><a href="/notice/talk">
+                建议反馈</a><img src="/images/icon/point.png"></h4>
+        </div>
+
+        <div class="space foot-helo">
+            <h4><span class="help" id="help"></span><a href="#">
+                帮助</a><img src="/images/icon/point.png"></h4>
+        </div>
+
+        <div class="space foot-about">
+            <h4><span class="about" id="about"></span><a href="#">关于</a><img
+                    src="/images/icon/point.png"></h4>
+        </div>
+    </div>
+    <div class="col-lg-4">
+    </div>
+</div>
+</body>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+<script src="/js/jQuery.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+</html>

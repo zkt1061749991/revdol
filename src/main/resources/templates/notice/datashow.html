@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>数据一览</title>
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <!--webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <!--//webfonts-->
+</head>
+
+
+<body>
+<h1>ReVdol!伊莎贝拉后援会</h1>
+<div class="app-location">
+    <h1 style="color: black">官方小程序数据一览</h1>
+    <div class="location">
+        <h2>伊莎贝拉</h2>
+        <h2 th:text="'本周('+${xcxData.week_string}+')总人气值（实时）'"></h2>
+        <h2 style="font-weight:bold;color: black" th:text="${xcxData.week_popular_num}">0</h2>
+        <h3 th:text="'本周排名:第 '+ ${xcxData.week_no}+' 名'"></h3>
+        <div class="location">
+            <h2>总人气值（实时）</h2>
+            <h2 style="font-weight:bold;color: black" th:text="${xcxData.popular_num}">0</h2>
+            <div class="location">
+                <h2>总粉丝数</h2>
+                <h2 style="font-weight:bold;color: black" th:text="${xcxData.fans_num}"></h2>
+            </div>
+
+            <h4>你发现了机密(还行),更多数据将视情况开放(小心翼翼</h4>
+            <h6>请勿以任何形式传播此页面及其内容！！！否则将视情节取消该页面并追究责任，嘿嘿嘿</h6>
+
+
+        </div>
+
+        <div class="new">
+            <h3><a href="/account/space">返回蛋仔主页</a></h3>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>
+<!--start-copyright-->
+<div class="copy-right">
+    <p>Copyright &copy; 2019. <a id="jsl_speed_stat1" href="http://www.yunaq.com/#zid=5ccbb24645475e17f0e7d3a0"
+                                 target="_blank">知道创宇云安全，腾讯爸爸特许，护我贝拉安全</a>
+        <script src="//static.yunaq.com/static/js/stat/picture1_stat.js" charset="utf-8"
+                type="text/javascript"></script>
+    </p>
+
+    <p>QQ-Group <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bMYdRg"> 伊莎贝拉后援会🌟 </a></p>
+    <p>BiliBili <a target="_blank" href="https://space.bilibili.com/2315820/"> 伊莎贝拉粉丝应援会 </a></p>
+    <p>All rights ReVdol! check here <a href="http://www.revdol.com/" target="_blank" title="revdol!">revdol!</a></p>
+</div>
+<!--//end-copyright-->
+</body>
+</html>

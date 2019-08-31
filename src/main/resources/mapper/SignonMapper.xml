@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.isabella.revdol.persistence.SignonMapper">
+
+  <select id="getSignon" parameterType="org.isabella.revdol.domin.Signon" resultType="org.isabella.revdol.domin.Signon">
+    SELECT signon.qq AS qq,signon.`password` AS `password` FROM signon WHERE signon.qq = #{qq} and signon.`password` = #{password};
+  </select>
+
+  <insert id="insertSignon" parameterType="org.isabella.revdol.domin.Signon">
+    INSERT INTO signon (qq,password) VALUES (#{qq},#{password});
+  </insert>
+
+  <update id="updateSignon" parameterType="org.isabella.revdol.domin.Signon">
+    UPDATE signon SET signon.`password` = #{password} WHERE signon.qq = #{qq};
+  </update>
+
+</mapper>

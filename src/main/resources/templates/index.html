@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>来啦！蛋仔~</title>
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <!--webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <!--//webfonts-->
+</head>
+<body>
+<h1>ReVdol!伊莎贝拉后援会</h1>
+<div class="app-location">
+    <h2>欢迎进入贝化值查询系统</h2>
+    <div class="line"><span></span>
+        <div th:text="${errorString}" style="color: red"></div>
+        <div th:text="${successString}" style="color: #00e000"></div>
+    </div>
+    <div class="location"><img src="/images/logo.png" class="img-responsive" alt=""/></div>
+    <form action="/account/login" method="post" name="form">
+        <input type="text" id="qq" name="qq" class="text" placeholder="请输入账号">
+        <input type="password" id="password" name="password" placeholder="6位数字查询密码">
+        <div class="submit"><input type="submit" id="submit_form" value="登录"></div>
+        <div class="clear"></div>
+        <div class="new">
+            <h3><a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bMYdRg">忘记密码联系群管</a></h3>
+            <h4><a href="account/newfan">→ 点此快速注册</a></h4>
+            <div class="clear"></div>
+        </div>
+    </form>
+</div>
+<!--start-copyright-->
+<div class="copy-right">
+    <p>Copyright &copy; 2019. <a id="jsl_speed_stat1" href="http://www.yunaq.com/#zid=5ccbb24645475e17f0e7d3a0" target="_blank">知道创宇云安全，腾讯爸爸特许，护我贝拉安全</a> <script src="//static.yunaq.com/static/js/stat/picture1_stat.js" charset="utf-8" type="text/javascript"></script></p>
+
+    <p>QQ-Group <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bMYdRg"> 伊莎贝拉后援会🌟 </a></p>
+    <p>BiliBili <a target="_blank" href="https://space.bilibili.com/2315820/"> 伊莎贝拉粉丝应援会 </a></p>
+    <p>All rights ReVdol! check here <a href="http://www.revdol.com/" target="_blank" title="revdol!">revdol!</a></p>
+</div>
+<!--//end-copyright-->
+</body>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+</html>

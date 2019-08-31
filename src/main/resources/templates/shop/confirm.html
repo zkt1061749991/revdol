@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>确认兑换</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/main.css" rel='stylesheet' type='text/css'/>
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="row">
+            <div class="col-xs-3">
+                <a th:href="@{/shop/detail(id=${prize.id})}">
+                    <img src="/images/icon/back.png">
+                </a>
+            </div>
+            <div class="col-xs-6">
+                下单！
+            </div>
+            <div class="col-xs-3">
+                <img src="/images/icon/menu.png" id="in" class="menu">
+            </div>
+        </div>
+        <div id="div1" class="navbar-hidden"><a
+                href="/shop/prize">兑换屋</a></div>
+        <div id="div2" class="navbar-hidden"><a
+                href="/point/details">贝化值明细</a></div>
+        <div id="div3" class="navbar-hidden"><a
+                href="/notice/notice">系统公告</a></div>
+        <div id="div4" class="navbar-hidden"><a
+                href="/account/info">个人信息</a></div>
+        <div id="div5" class="navbar-hidden"><a
+                href="/notice/talk">意见反馈</a></div>
+        <div id="div6" class="navbar-hidden"><a
+                href="/account/password">修改密码</a></div>
+        <div id="div7" class="navbar-hidden"><a
+                href="/account/logout">退出登录</a></div>
+    </div>
+
+
+    <div class="col-lg-4">
+    </div>
+
+
+    <div class="col-lg-4">
+
+
+        <h4 th:text="'兑换一份： ' + ${prize.prize_name}">商品详情</h4>
+
+
+        <form method="post" action="/shop/buy">
+            <div class="form-group" th:text="'我的贝化值：' + ${account.point}">
+                <!-- 商品号 -->
+            </div>
+            <div class="form-group" th:text="'兑换所需贝化值：' + ${prize.point}">
+                <!-- 商品号 -->
+            </div>
+            <input name="currunt_prize_id" th:value="${prize.id}" hidden="true">
+            <h4 th:if="${account.hiddenadd} == ''"><a href="/account/info">还未填写收货信息？点此处去填写</a></h4>
+            <div class="address" th:unless="${account.hiddenadd} == ''" th:text="'收货信息：' + ${account.hiddenadd}">
+                <!-- 地址 -->
+            </div>
+            <h6 th:unless="${account.hiddenadd} == ''">收货信息在提交后将无法修改，请确保填写正确</h6>
+            <div th:text="${cannot}" style="color: red;padding-top: 10px;padding-bottom: 10px"></div>
+
+            <div th:if="${prize.state} == 1">
+                <div th:if="${account.state} == 0" class="form-group-confirm">
+                    <p style="color: red">账号待审核，无法兑换&nbsp;&nbsp;</p>
+                    <a th:href="@{/shop/detail(id=${prize.id})}">
+                        <button type="button" class="btn btn-block">返回</button>
+                    </a>
+                </div>
+
+                <div th:unless="${account.state} == 0" class="form-group-confirm">
+                    <button type="submit" class="btn btn-primary btn-block confirm">确认兑换</button>
+                    <a th:href="@{/shop/detail(id=${prize.id})}">
+                        <button type="button" class="btn btn-block">再想想</button>
+                    </a>
+                </div>
+            </div>
+
+            <div th:unless="${prize.state} == 1" class="form-group">
+                <button class="btn btn-block" disabled="disabled">暂时无法兑换</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="col-lg-4">
+    </div>
+</div>
+</body>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+<script src="/js/jQuery.js"></script>
+<script src="/js/main.js"></script>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.isabella.revdol.persistence.AccountMapper">
+
+  <select id="getAccount" parameterType="string" resultType="org.isabella.revdol.domin.Account">
+    SELECT signon.qq AS qq,account.`name` AS name,account.point AS point,account.state AS state,account.weixin AS weixin,account.bilibili AS bilibili,account.xcxuid AS xcxuid,account.xcxname AS xcxname,account.remark AS remark,account.address AS address FROM account,signon WHERE account.qq_id = #{qq} AND signon.qq = account.qq_id FOR UPDATE ;
+  </select>
+
+  <update id="updateAccount" parameterType="org.isabella.revdol.domin.Account">
+    UPDATE account SET account.name = #{name},account.weixin=#{weixin},account.bilibili=#{bilibili},account.xcxuid=#{xcxuid},account.xcxname=#{xcxname},account.address=#{address} WHERE account.qq_id = #{qq}
+  </update>
+
+  <update id="updateState" parameterType="org.isabella.revdol.domin.Account">
+    UPDATE account SET account.state = #{state} WHERE account.qq_id = #{qq};
+  </update>
+
+</mapper>

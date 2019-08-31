@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.isabella.revdol.persistence.NoticeMapper">
+
+    <select id="getNoticeList" resultType="org.isabella.revdol.domin.Notice">
+        SELECT notice.id AS id, notice.notice_title AS title ,notice.notice_body AS body, notice.notice_date AS date FROM notice ORDER BY notice_date DESC;
+    </select>
+
+    <select id="getNotice" parameterType="string" resultType="org.isabella.revdol.domin.Notice">
+        SELECT notice.id AS id, notice.notice_title AS title ,notice.notice_body AS body, notice.notice_date AS date FROM notice WHERE notice.id = #{id} ;
+    </select>
+
+    <insert id="insertFeedback" parameterType="org.isabella.revdol.domin.Feedback">
+        INSERT INTO feedback (qq,feedback_type,feedback_body,feedback_date,feedback_state,deal_date) VALUES (#{qq},#{type},#{body},current_timestamp,0,NULL);
+    </insert>
+
+    <select id="getNowIndexBanner" resultType="org.isabella.revdol.domin.Event">
+        SELECT event.id AS id, event.event_title AS event_title, event.event_alt AS event_alt, event.img AS img, event.url AS url, event.begin_date AS begin_date, event.end_date AS end_date FROM event WHERE event.type = 0 AND event.state = 1 ORDER BY begin_date DESC;
+    </select>
+
+</mapper>
