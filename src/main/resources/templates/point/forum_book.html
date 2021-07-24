@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>贝化值系统</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/main.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="row">
+            <div class="col-xs-3">
+                <a href="/account/space">
+                    <img src="/images/icon/home.png">
+                </a>
+            </div>
+            <div class="col-xs-6">
+                二创一键登记
+            </div>
+            <div class="col-xs-3">
+                <img src="/images/icon/menu.png" id="in" class="menu">
+            </div>
+        </div>
+        <div id="div7" class="navbar-hidden"><a
+                href="/account/logout">退出登录</a></div>
+    </div>
+
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <h2>使用说明</h2>
+            <h3 th:if="${account.xcxuid} == '' or ${account.xcxuid} == null" th:text="${displaystring}" style="color: red"></h3>
+            <p>1、使用前请先确保您的小程序UID填写正确</p>
+            <h4 th:unless="${account.xcxuid} == '' or ${account.xcxuid} == null" th:text="'我的小程序战姬众号(UID):'+${account.xcxuid}">我的小程序战姬众号(UID):123456</h4>
+            <a th:if="${account.xcxuid} == '' or ${account.xcxuid} == null" href="/account/info"><h4>点击此处填写UID</h4></a>
+            <p>2、系统仅获取您在小程序【伊莎贝拉】战姬众板块中最新一篇发帖</p>
+            <p>3、受服务器能力所限，发帖时间和使用此功能获取时间间隔过长(大约2天开外)，则可能无法获取</p>
+            <p>4、获取过程涉及小程序数据，我们将确保您的数据安全，使用此功能即视为同意该隐私条款</p>
+            <p>5、成功获取发帖后，系统将自动更新您的小程序昵称和用户状态(贡献值达1386以上解除账号限制)</p>
+            <p>6、点击下面的按钮开始获取，所需时间可能较慢，请耐心等待</p>
+            <p>7、成功获取发帖后，若检测为二创帖，则可选择将此二创登记至贝化值系统中</p>
+        </div>
+
+
+        <div class="body-wait">
+            <div class="form-group">
+                <a href="/point/getforum">
+                                    <button class="btn btn-primary btn-block">获取我的帖子</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+    </div>
+</div>
+</body>
+
+<script src="/js/jQuery.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script language="javascript">
+    // <!--//防止页面后退-->
+    // <!--history.pushState(null, null, document.URL);-->
+    // <!--window.addEventListener('popstate', function () {-->
+    // <!--history.pushState(null, null, document.URL);-->
+    // <!--});-->
+</script>
+</html>

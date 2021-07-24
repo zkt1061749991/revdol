@@ -5,11 +5,35 @@
 <mapper namespace="org.isabella.revdol.persistence.PointMapper">
 
     <select id="getPointlogListByQq" parameterType="string" resultType="org.isabella.revdol.domin.Pointlog">
-        SELECT pointlog.operated_qq_id AS operated_qq_id,pointlog.operate_type AS operate_type ,pointlog.operate_point AS operate_point, pointlog.description AS description ,pointlog.operate_date AS operate_date ,pointlog.img AS img FROM pointlog WHERE pointlog.operated_qq_id = #{qq} AND pointlog.state = 1 ORDER BY operate_date DESC;
+        SELECT pointlog.operated_qq_id AS operated_qq_id,pointlog.type AS type,pointlog.operate_type AS operate_type ,pointlog.operate_point AS operate_point, pointlog.description AS description ,pointlog.operate_date AS operate_date ,pointlog.img AS img, pointlog.forum_id AS forum_id FROM pointlog WHERE pointlog.operated_qq_id = #{qq} AND pointlog.state = 1 ORDER BY operate_date DESC;
     </select>
 
     <insert id="insertPointlog" parameterType="org.isabella.revdol.domin.Pointlog">
-        INSERT INTO pointlog (state,operated_qq_id,operate_type,operate_point,description,operate_date,operator_id) VALUES (#{state},#{operated_qq_id},#{operate_type},#{operate_point},#{description},current_timestamp,11)
+        INSERT INTO pointlog (state,type,operated_qq_id,operate_type,operate_point,description,img,operate_date,operator_id,forum_id,pointlog.`explain`,pointlog.remark) VALUES (#{state},#{type},#{operated_qq_id},#{operate_type},#{operate_point},#{description},#{img},current_timestamp,11,#{forum_id},#{explain},#{remark})
+    </insert>
+
+    <select id="getForum" parameterType="int" resultType="org.isabella.revdol.domin.Forum">
+        SELECT forum.id AS id,forum.user_id AS user_id,forum.type AS type,forum.title AS title,forum.content AS content,forum.vid AS vid,forum.praise_counts AS praise_counts,forum.is_pick AS is_pick,forum.tag AS tag,forum.status AS status,forum.created_time AS created_time FROM forum WHERE forum.id = #{id} FOR UPDATE ;
+    </select>
+    
+    <insert id="insertForum" parameterType="org.isabella.revdol.domin.Forum">
+        INSERT INTO forum (id,user_id,type,title,content,vid,praise_counts,is_pick,tag,status,created_time) VALUES (#{id},#{user_id},#{type},#{title},#{content},#{vid},#{praise_counts},#{is_pick},#{tag},#{status},#{created_time})
+    </insert>
+
+    <select id="getAllForum" parameterType="int" resultType="org.isabella.revdol.domin.AllForum">
+        SELECT allforum.id AS id,allforum.idol_id AS idol_id,allforum.user_id AS user_id,allforum.type AS type,allforum.title AS title,allforum.content AS content,allforum.vid AS vid,allforum.audio_url AS audio_url,allforum.praise_counts AS praise_counts,allforum.is_pick AS is_pick,allforum.is_original AS is_original,allforum.is_top AS is_top,allforum.tag AS tag,allforum.status AS status,allforum.created_time AS created_time,allforum.is_official AS is_official FROM allforum WHERE allforum.id = #{id} FOR UPDATE ;
+    </select>
+
+    <select id="getForumListByXcxuid" parameterType="string" resultType="org.isabella.revdol.domin.AllForum">
+        SELECT allforum.id AS id,allforum.idol_id AS idol_id,allforum.user_id AS user_id,allforum.type AS type,allforum.title AS title,allforum.content AS content,allforum.vid AS vid,allforum.audio_url AS audio_url,allforum.praise_counts AS praise_counts,allforum.is_pick AS is_pick,allforum.is_original AS is_original,allforum.is_top AS is_top,allforum.tag AS tag,allforum.status AS status,allforum.created_time AS created_time,allforum.is_official AS is_official FROM allforum WHERE allforum.user_id = #{xcxuid} AND date_sub(curdate(), INTERVAL 7 DAY) &lt;= date(str_to_date(allforum.created_time,'%Y-%m-%d %H:%i')) AND allforum.idol_id = 4 FOR UPDATE ;
+    </select>
+
+    <select id="getbookedForum" parameterType="int" resultType="org.isabella.revdol.domin.Forum">
+        SELECT forum.id AS id,forum.user_id AS user_id,forum.type AS type,forum.title AS title,forum.content AS content,forum.vid AS vid,forum.praise_counts AS praise_counts,forum.is_pick AS is_pick,forum.tag AS tag,forum.status AS status,forum.created_time AS created_time FROM forum WHERE forum.id = #{id} FOR UPDATE ;
+    </select>
+
+    <insert id="insertbookedForum" parameterType="org.isabella.revdol.domin.AllForum">
+        INSERT INTO forum (id,user_id,type,title,content,vid,praise_counts,is_pick,tag,status,created_time) VALUES (#{id},#{user_id},#{type},#{title},#{content},#{vid},#{praise_counts},#{is_pick},#{tag},#{status},#{created_time})
     </insert>
 
 </mapper>

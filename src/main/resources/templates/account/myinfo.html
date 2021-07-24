@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>个人信息</title>
+    <title>贝化值系统</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
     <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
@@ -24,14 +24,12 @@
                 </a>
             </div>
             <div class="col-xs-6">
-                个人信息
+                账号信息
             </div>
             <div class="col-xs-3">
                 <img src="/images/icon/menu.png" id="in" class="menu">
             </div>
         </div>
-        <div id="div6" class="navbar-hidden"><a
-                href="/account/password">修改密码</a></div>
         <div id="div7" class="navbar-hidden"><a
                 href="/account/logout">退出登录</a></div>
     </div>
@@ -42,24 +40,26 @@
         <div class="container container-small">
             <form id="SetupForm" method="post" action="/account/info">
                 <div class="form-group">
-                    <label>QQ群名片/昵称</label>
-                    <input th:value="${account.name}" id="name" name="name" type="text" class="form-control" placeholder="这位老铁怎么称呼？">
+                    <label>群昵称</label>
+                    <input th:value="${account.name}" id="name" name="name" type="text" class="form-control" placeholder="将显示在蛋仔主页">
                 </div>
                 <div class="form-group">
                     <label>小程序昵称</label>
-                    <input th:value="${account.xcxname}" id="xcxname" name="xcxname" type="text" class="form-control" placeholder="请正确填写，用于验证二创投稿">
+                    <input th:value="${account.xcxname}" id="xcxname" name="xcxname" type="text" class="form-control" placeholder="选填，绑定战姬众号会自动更新">
                 </div>
                 <div class="form-group">
-                    <label for="xcxuid">小程序战姬众号(UID)</label>
-                    <input th:value="${account.xcxuid}" id="xcxuid" name="xcxuid" type="text" class="form-control" placeholder="就是要你id，查你水表">
+                    <label th:if="${account.xcxuid} == '' or ${account.xcxuid} == null" for="xcxuid">小程序战姬众号(UID)</label>
+                    <label th:if="${account.xcxuid} != '' and ${account.xcxuid} != null" for="xcxuid">小程序战姬众号(UID) 已绑定(改绑请联系管理)</label>
+                    <input th:if="${account.xcxuid} == '' or ${account.xcxuid} == null" th:value="${account.xcxuid}" id="xcxuid" name="xcxuid" type="text" class="form-control" placeholder="请准确填写，提交后将进行绑定无法修改！">
+                    <input th:if="${account.xcxuid} != '' and ${account.xcxuid} != null" th:value="${account.xcxuid}" name="xcxuid" type="text" readonly="readonly" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="bilibili">B站UID</label>
                     <input th:value="${account.bilibili}" id="bilibili" name="bilibili" type="text" class="form-control" placeholder="便于视频类投稿和b博抽奖找人">
                 </div>
                 <div class="form-group">
-                    <label>*邮寄地址及联系方式</label>
-                    <textarea placeholder="请正确填写您要邮递奖品到的地址，姓名及手机号码，为了确保您的信息不会被泄露，【已填写】的信息将【不会在此处显示】，如需修改请重新填写即可" name="address" class="form-control areastyle" rows="6" maxlength="255"></textarea>
+                    <label>*邮寄联系方式</label>
+                    <textarea placeholder="请填写您要邮递奖品到的地址，名字及手机号码，为了确保您的信息不会被泄露，【已填写】的信息将【不会在此处显示】，如需修改请重新填写即可" name="address" class="form-control areastyle" rows="5" maxlength="255"></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">确认</button>

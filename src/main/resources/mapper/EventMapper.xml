@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.isabella.revdol.persistence.EventMapper">
+
+    <select id="getReceiveListByEvent_code" parameterType="string" resultType="org.isabella.revdol.domin.Receive">
+        SELECT receive.id AS id, receive.event_code AS event_code , receive.qq AS qq, receive.date AS operate_date, receive.description AS description FROM receive WHERE receive.event_code = #{event_code} ORDER BY operate_date DESC;
+    </select>
+
+    <select id="getReceive" parameterType="org.isabella.revdol.domin.Receive" resultType="org.isabella.revdol.domin.Receive">
+        SELECT receive.id AS id, receive.event_code AS event_code , receive.qq AS qq FROM receive WHERE receive.qq = #{qq} AND receive.event_code = #{event_code} FOR UPDATE ;
+    </select>
+
+    <insert id="insertReceive" parameterType="org.isabella.revdol.domin.Receive">
+        INSERT INTO `receive` (event_code,date,qq,description) VALUES (#{event_code},current_timestamp,#{qq},#{description});
+    </insert>
+
+</mapper>

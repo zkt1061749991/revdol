@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>奖品详情</title>
+    <title>贝化值系统</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
     <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
@@ -22,7 +22,7 @@
                 </a>
             </div>
             <div class="col-xs-6">
-                康康奖品
+                奖品详情
             </div>
             <div class="col-xs-3">
                 <img src="/images/icon/menu.png" id="in" class="menu">
@@ -34,12 +34,6 @@
                 href="/point/details">贝化值明细</a></div>
         <div id="div3" class="navbar-hidden"><a
                 href="/notice/notice">系统公告</a></div>
-        <div id="div4" class="navbar-hidden"><a
-                href="/account/info">个人信息</a></div>
-        <div id="div5" class="navbar-hidden"><a
-                href="/notice/talk">意见反馈</a></div>
-        <div id="div6" class="navbar-hidden"><a
-                href="/account/password">修改密码</a></div>
         <div id="div7" class="navbar-hidden"><a
                 href="/account/logout">退出登录</a></div>
     </div>
@@ -54,10 +48,16 @@
         <div class="goods-img">
             <img class="prize_img" th:src="'/out_images/'+${prize.img}">
         </div>
-        <h4 th:text="${prize.prize_name}">商品详情</h4>
-        <h5 th:text="'奖品编号:' + ${prize.prize_no}">商品详情</h5>
+        <h4 th:text="${prize.prize_name}">奖品详情</h4>
+        <h5 th:text="'奖品编号:' + ${prize.prize_no}">详情</h5>
+        <h5 th:if="${prize.level eq 1}">稀有度：★☆☆☆☆ (N)</h5>
+        <h5 th:if="${prize.level eq 2}">稀有度：★★☆☆☆ (R)</h5>
+        <h5 th:if="${prize.level eq 3}">稀有度：★★★☆☆ (SR)</h5>
+        <h5 th:if="${prize.level eq 4}">稀有度：★★★★☆ (SSR)</h5>
+        <h5 th:if="${prize.level eq 5}">稀有度：★★★★★ (UR)</h5>
+        <h5 th:if="${prize.quantity le 10}" th:text="'剩余数量：'+${prize.quantity}" style="color: #de4320"></h5>
         <div class="details" th:utext="${prize.description}">
-            这个商品由谁谁谁提供，大小多少，形状几何，颜色怎么样。
+            这个由谁谁谁提供，大小多少，形状几何，颜色怎么样。
         </div>
         <div class="price" id="price" th:text="${prize.point}">1000</div>
         <div th:if="${prize.state} == 1" class="form-group">

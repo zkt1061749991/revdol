@@ -5,11 +5,11 @@
 <mapper namespace="org.isabella.revdol.persistence.PrizeMapper">
 
     <select id="getPrizeList" resultType="org.isabella.revdol.domin.Prize">
-        SELECT prize.id AS id, prize.prize_no AS prize_no ,prize.prize_name AS prize_name, prize.point AS point, prize.img AS img, prize.description AS description, prize.quantity AS quantity, prize.publish AS state FROM prize ORDER BY point ASC;
+        SELECT prize.id AS id, prize.prize_no AS prize_no ,prize.prize_name AS prize_name, prize.point AS point, prize.img AS img, prize.description AS description, prize.quantity AS quantity, prize.publish AS state, prize.level AS level FROM prize ORDER BY point ASC;
     </select>
 
     <select id="getPrize" parameterType="string" resultType="org.isabella.revdol.domin.Prize">
-        SELECT prize.id AS id, prize.prize_no AS prize_no ,prize.prize_name AS prize_name, prize.point AS point, prize.img AS img, prize.description AS description, prize.quantity AS quantity, prize.publish AS state FROM prize WHERE prize.id = #{id};
+        SELECT prize.id AS id, prize.prize_no AS prize_no ,prize.prize_name AS prize_name, prize.point AS point, prize.img AS img, prize.description AS description, prize.quantity AS quantity, prize.publish AS state, prize.level AS level FROM prize WHERE prize.id = #{id};
     </select>
 
     <update id="updatePrize" parameterType="org.isabella.revdol.domin.Prize">

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>贝化值系统</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/main.css" rel='stylesheet' type='text/css'/>
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="row">
+            <div class="col-xs-3">
+                <a href="/account/space">
+                    <img src="/images/icon/home.png">
+                </a>
+            </div>
+            <div class="col-xs-6">
+                获取失败
+            </div>
+            <div class="col-xs-3">
+                <img src="/images/icon/menu.png" id="in" class="menu">
+            </div>
+        </div>
+        <div id="div7" class="navbar-hidden"><a
+                href="/account/logout">退出登录</a></div>
+    </div>
+
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <h3>可能由以下原因造成：</h3>
+            <p>1、小程序UID未正确填写</p>
+            <p>2、与发帖时间间隔过长</p>
+            <p>3、非伊莎贝拉板块发帖</p>
+            <p>4、帖子被小程序屏蔽(请检查小程序内是否正常显示)</p>
+            <p>5、若非上述原因造成，则有可能是系统故障，请向群管理反馈</p>
+            <p style="color: #ff8d10">● 您仍然可以截图私聊管理员进行人工登记</p>
+        </div>
+
+        <div class="form-group">
+            <a href="/account/space">
+                <button type="submit" class="btn btn-primary btn-block">回主页</button>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+    </div>
+</div>
+</body>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+<script src="/js/jQuery.js"></script>
+<script src="/js/main.js"></script>
+</html>

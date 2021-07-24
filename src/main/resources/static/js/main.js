@@ -74,13 +74,13 @@ $(".notice").click(function () {
     return false;
 });
 $(".foot-helo").click(function () {
-    $.alert("emmmm，新的帮助页面正在编写(咕咕咕)，有任何问题请咨询群管")
+    $.alert("请在跳转的B站专栏中查看…………")
 });
 $(".body-memory").click(function () {
     $.alert("即将开放，敬请期待（咕咕咕）")
 });
 $(".body-activity").click(function () {
-    $.alert("指日可待的开放？贝化值众筹女装不是梦")
+    $.alert("暂无开放活动，请关注应援团公告")
 });
 $(".body-gallery").click(function () {
     $.alert("即将开放，敬请期待（咕咕咕）")
@@ -100,7 +100,7 @@ $(".foot-about").click(function () {
 
 /*点击提示*/
 $(".idtype0").click(function () {
-    $.alert("该账号处于功能受限状态，将无法进行任何【消耗】贝化值的操作，但不影响贝化值的积累。\r\n<br/>这是因为该账号没有进行贡献值登记：\r\n<br/>小程序内贝拉的总贡献值满1386，截图私聊群管理员即可！");
+    $.alert("该账号处于功能受限状态，将无法进行任何贝化值的操作，但不影响贝化值的积累。\r\n<br/>这是因为该账号未通过【贡献值核验】，请检查以下条件是否满足：\r\n<br/>①在\"个人信息\"处【绑定】小程序战姬众号(UID)\r\n<br/>②小程序贝拉【总贡献值】1386以上\r\n<br/>③【绑定后的】7天内有在贝拉版块发帖\r\n<br/>如确实条件满足但没有解除受限的，请私聊群管理员解决！");
 });
 /*点击提示*/
 $(".idtype1").click(function () {
@@ -117,6 +117,10 @@ $(".idtype3").click(function () {
 /*点击提示*/
 $(".tips").click(function () {
     $.alert("这是来自官方小程序正在进行的活动信息哦！<br/>快去小程序康康吧");
+});
+/*点击提示*/
+$(".body-wait").click(function () {
+    $.alert("正在处理中······<br/>完成后将自动跳转，请等待<br/>请勿重复请求，偶内盖~");
 });
 
 

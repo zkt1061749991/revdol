@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>系统公告</title>
+    <title>贝化值系统</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
     <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
@@ -29,19 +29,7 @@
             </div>
         </div>
         <div id="div1" class="navbar-hidden"><a
-                href="/shop/prize">兑换屋</a></div>
-        <div id="div2" class="navbar-hidden"><a
-                href="/point/details">贝化值明细</a></div>
-        <div id="div3" class="navbar-hidden"><a
-                href="/notice/notice">系统公告</a></div>
-        <div id="div4" class="navbar-hidden"><a
-                href="/account/info">个人信息</a></div>
-        <div id="div5" class="navbar-hidden"><a
-                href="/notice/talk">意见反馈</a></div>
-        <div id="div6" class="navbar-hidden"><a
-                href="/notice/datashow">修改密码</a></div>
-        <div id="div7" class="navbar-hidden"><a
-                href="/account/logout">退出登录</a></div>
+                href="/account/space">回到主页</a></div>
     </div>
 
     <div class="col-lg-4">
@@ -49,11 +37,11 @@
     <div class="col-lg-4">
 
         <div class="notice" th:each="notice:${noticeList}">
-            <div class="notice-title"><a th:href="@{/notice/detail(id=${notice.id})}" th:text="${notice.title}">贝化值查询系统已上线！</a></div>
+            <div class="notice-title"><a th:href="@{/notice/detail(id=${notice.id})}" th:text="${notice.title}">标题</a></div>
             <div class="text" th:utext="${notice.show}">
-                找群管登记的才会有贝化值喔
+                内容
             </div>
-            <div class="isflag" th:text="${notice.date}">两天前</div>
+            <div class="isflag" th:text="${notice.date}">日期</div>
         </div>
 
     </div>

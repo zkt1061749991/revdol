@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>贝化值系统</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/main.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+</head>
+<body>
+<div class="container">
+    <div class="container">
+        <div class="navbar">
+            <div class="row">
+                <div class="col-xs-3">
+                    <a href="/account/space">
+                        <img src="/images/icon/home.png">
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    兑换码
+                </div>
+                <div class="col-xs-3">
+                    <img src="/images/icon/menu.png" id="in" class="menu">
+                </div>
+            </div>
+            <div id="div7" class="navbar-hidden"><a
+                    href="/account/logout">退出登录</a></div>
+        </div>
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+
+        <div class="container container-small">
+            <form method="post" action="/point/cdkey">
+                <div class="form-group">
+                    <label>兑换前请确认账号准确无误：</label>
+                    <label th:text="${qq}">qq</label>
+                </div>
+                <div class="form-group">
+                    <label>请输入兑换码:</label>
+                    <label th:text="${stateString}" style="color: red">兑换状态</label>
+                    <input name="cdkey" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">确认</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+</body>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+<script src="/js/jQuery.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="/js/check.js"></script>
+<script src="/js/main.js"></script>
+</html>

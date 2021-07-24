@@ -17,7 +17,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/out_images/**").addResourceLocations("file:/revdol/media/");
+        //registry.addResourceHandler("/out_images/**").addResourceLocations("file:/revdol/media/");
+        registry.addResourceHandler("/out_images/**").addResourceLocations("http://resource.revdol.club/revdol/media/");
         //registry.addResourceHandler("/out_images/**").addResourceLocations("file:D://【操作间】请开始您新的表演/");
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>修改密码</title>
+    <title>贝化值系统</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
     <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
@@ -31,8 +31,6 @@
                     <img src="/images/icon/menu.png" id="in" class="menu">
                 </div>
             </div>
-            <div id="div4" class="navbar-hidden"><a
-                    href="/account/info">个人信息</a></div>
             <div id="div7" class="navbar-hidden"><a
                     href="/account/logout">退出登录</a></div>
         </div>
@@ -43,8 +41,8 @@
         <div class="container container-small">
             <form id="LockForm" method="post" action="/account/password" name="form">
                 <div class="form-group">
-                    <label>修改前请确认QQ号码准确无误：</label>
-                    <label th:text="${qq}">qq</label>
+                    <label>修改前请确认账号准确无误：</label>
+                    <label th:text="${qq}">账号</label>
                 </div>
                 <div class="form-group">
                     <label for="password">新密码</label>

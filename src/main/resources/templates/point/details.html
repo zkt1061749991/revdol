@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>贝化值明细</title>
+    <title>贝化值系统</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
     <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
@@ -22,7 +22,7 @@
                 </a>
             </div>
             <div class="col-xs-6">
-                贝化值明细
+                明细查询
             </div>
             <div class="col-xs-3">
                 <img src="/images/icon/menu.png" id="in" class="menu">
@@ -30,16 +30,6 @@
         </div>
         <div id="div1" class="navbar-hidden"><a
                 href="/shop/prize">兑换屋</a></div>
-        <div id="div2" class="navbar-hidden"><a
-                href="/point/details">贝化值明细</a></div>
-        <div id="div3" class="navbar-hidden"><a
-                href="/notice/notice">系统公告</a></div>
-        <div id="div4" class="navbar-hidden"><a
-                href="/account/info">个人信息</a></div>
-        <div id="div5" class="navbar-hidden"><a
-                href="/notice/talk">意见反馈</a></div>
-        <div id="div6" class="navbar-hidden"><a
-                href="/account/password">修改密码</a></div>
         <div id="div7" class="navbar-hidden"><a
                 href="/account/logout">退出登录</a></div>
     </div>
@@ -59,11 +49,11 @@
             <h4 class="isnum" th:if="${pointlog.operate_type} == '3'" th:text="'-' + ${pointlog.operate_point}">
                 800</h4>
             <div class="isReason" th:text="${pointlog.description}">
-                【优雅贝拉】优秀限定二创 同人文 基础分133 奖励分400 活动加成1.5倍
+                条目描述
             </div>
-            <div class="isdata" th:text="${pointlog.operate_date}">2019/5/1</div>
-            <a style="color: #78797C" th:unless="${pointlog.img} == ''" th:href="@{/point/show_pic(name=${pointlog.img})}">▶ look </a>
-
+            <div class="isdata" th:text="${pointlog.operate_date}">日期</div>
+            <a style="color: #78797C" th:if="${pointlog.img ne '' && pointlog.forum_id eq 0}" th:href="@{/point/show_pic(name=${pointlog.img})}">▶ look </a>
+            <a style="color: #78797C" th:if="${pointlog.forum_id ne 0}" th:href="@{/point/show_forum(id=${pointlog.forum_id})}">▶ look </a>
         </div>
 
     </div>

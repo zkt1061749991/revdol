@@ -3,7 +3,6 @@ package org.isabella.revdol.service.impl;
 import org.isabella.revdol.domin.Order;
 import org.isabella.revdol.domin.Prize;
 import org.isabella.revdol.persistence.OrderMapper;
-import org.isabella.revdol.persistence.PointMapper;
 import org.isabella.revdol.persistence.PrizeMapper;
 import org.isabella.revdol.service.PrizeService;
 import org.springframework.beans.factory.annotation.Autowired;

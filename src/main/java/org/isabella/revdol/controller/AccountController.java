@@ -140,9 +140,31 @@ public class AccountController {
         String qq = (String) session.getAttribute("qq");
         if (qq != null) {
             Account account = accountService.getAccount(qq);
-            account.setName(name);
-            account.setXcxuid(xcxuid);
             account.setXcxname(xcxname);
+            //战姬众号绑定验证
+            if(!xcxuid.equals("")) {
+
+                if (account.getXcxuid().equals("")) {
+                    if (!accountService.XcxuidExist(xcxuid)) {
+                        account.setXcxuid(xcxuid);
+                    } else {
+                        String errorString = "该战姬众号已被绑定，请检查输入是否正确";
+                        model.addAttribute("errorString", errorString);
+                        return "fail";
+                    }
+                } else {
+                    if (!account.getXcxuid().equals(xcxuid)) {
+                        return "redirect:/error";
+                    }
+                }
+
+                Member member = accountService.getMemberByUid(Integer.valueOf(xcxuid));
+                if(member != null) {
+                    account.setXcxname(member.getNickname());
+                }
+            }
+
+            account.setName(name);
             account.setBilibili(bilibili);
             if(!address.equals("")) {
                 account.setAddress(address);

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.isabella.revdol.persistence.ResourceMapper">
+    <select id="getImageListByForum_id" parameterType="int" resultType="org.isabella.revdol.domin.Image">
+        SELECT image.id AS id,image.type AS type,image.img AS img,image.forum_id AS forum_id,image.uid AS uid, image.width AS width, image.height AS height, image.url AS url FROM image WHERE image.forum_id = #{id} AND image.type = 1 ORDER BY image.id ASC ;
+    </select>
+
+    <select id="getThumbListByForum_id" parameterType="int" resultType="org.isabella.revdol.domin.Image">
+        SELECT image.id AS id,image.type AS type,image.img AS img,image.forum_id AS forum_id,image.uid AS uid, image.width AS width, image.height AS height, image.url AS url FROM image WHERE image.forum_id = #{id} AND image.type = 0 ORDER BY image.id ASC ;
+    </select>
+
+    <select id="getImageByImg" parameterType="string" resultType="org.isabella.revdol.domin.Image">
+        SELECT image.id AS id,image.type AS type,image.img AS img,image.forum_id AS forum_id,image.uid AS uid, image.width AS width, image.height AS height, image.url AS url FROM image WHERE image.img = #{img} ;
+    </select>
+
+    <insert id="insertImage" parameterType="org.isabella.revdol.domin.Image">
+        INSERT INTO image (type,img,url,forum_id,uid,width,height) VALUES (#{type},#{img},#{url},#{forum_id},#{uid},#{width},#{height}) ;
+    </insert>
+
+    <select id="getCdkey" parameterType="string" resultType="org.isabella.revdol.domin.Cdkey">
+        SELECT cdkey.id AS id,cdkey.cdkey AS cdkey,cdkey.state AS state,cdkey.type AS type,cdkey.create_date AS create_date, cdkey.use_date AS use_date, cdkey.point AS point, cdkey.description AS description FROM cdkey WHERE cdkey.cdkey = #{cdkey};
+    </select>
+
+    <update id="useCdkey" parameterType="string">
+        UPDATE cdkey SET cdkey.state = 1, cdkey.use_date = current_timestamp WHERE cdkey.cdkey = #{cdkey};
+    </update>
+
+
+    <select id="getZfList" resultType="org.isabella.revdol.domin.Topic">
+        SELECT topic.id AS id,topic.topic AS topic,topic.type AS type,topic.state AS state,topic.point AS point,topic.description AS description FROM topic WHERE topic.type = 2 AND topic.state = 1 ;
+    </select>
+
+    <select id="getZfTopic" resultType="org.isabella.revdol.domin.Topic">
+        SELECT topic.id AS id,topic.topic AS topic,topic.type AS type,topic.state AS state,topic.point AS point,topic.description AS description FROM topic WHERE topic.type = 2 AND topic.topic = #{topic} ;
+    </select>
+
+    <insert id="insertZfTopic" parameterType="org.isabella.revdol.domin.Topic">
+        INSERT INTO topic (topic,type,state,point) VALUES (#{topic},2,1,#{point}) ;
+    </insert>
+
+    <select id="getLastZf" parameterType="org.isabella.revdol.domin.Zf" resultType="org.isabella.revdol.domin.Zf">
+        SELECT zf.id AS id,zf.qq AS qq,zf.topic AS topic,zf.date AS date FROM zf WHERE zf.qq = #{qq} AND zf.topic = #{topic} AND TO_DAYS(zf.date) = TO_DAYS(NOW()) ;
+    </select>
+
+    <select id="getSendTopicList" resultType="org.isabella.revdol.domin.Topic">
+        SELECT topic.id AS id,topic.topic AS topic,topic.type AS type,topic.state AS state,topic.point AS point,topic.description AS description FROM topic WHERE topic.type = 1 AND topic.state = 1 ;
+    </select>
+
+    <select id="getActTopicList" resultType="org.isabella.revdol.domin.Topic">
+        SELECT topic.id AS id,topic.topic AS topic,topic.type AS type,topic.state AS state,topic.point AS point,topic.description AS description FROM topic WHERE topic.type = 0 AND topic.state = 1 ;
+    </select>
+
+    <insert id="insertZf" parameterType="org.isabella.revdol.domin.Zf">
+        INSERT INTO zf (qq,topic,date) VALUES (#{qq},#{topic},current_timestamp) ;
+    </insert>
+</mapper>

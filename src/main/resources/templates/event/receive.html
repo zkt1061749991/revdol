@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>贝化值系统</title>
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <!--webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <!--//webfonts-->
+</head>
+<body>
+<h6><img src="/images/logo.jpg" class="img-responsive" alt=""></h6>
+<div class="app-location">
+    <h2>贝化值领取页面</h2>
+    <div class="line"><span></span>
+        <div th:text="${errorString}" style="color: red"></div>
+    </div>
+    <div class="location"><h3>当前福利</h3><h6 style="color: #78797C" th:text="${eventtitle}">领取贝化值</h6>
+    </div>
+
+    <form id="getPointForm" action="/event/receive" method="post">
+        <div>
+            <label for="new_qq"></label>
+            <input style="width: 90%" type="text" id="new_qq" name="qq" placeholder="请输入需要兑换贝化值的账号">
+        </div>
+
+        <div>
+            <label for="inputString"></label>
+            <input style="width: 90%" type="text" id="inputString" name="inputString" placeholder="请输入下方验证码">
+        </div>
+        <a href="javascript:void(0);" title="点击更换验证码">
+            <img id="imgVerify" src="" alt="验证码" height="100%" width="45%" onclick="getVerify(this);">
+        </a>
+        <div class="submit"><input type="submit" id="submit_form" value="兑换"></div>
+        <div class="clear"></div>
+        <div class="new">
+            <h3><a a href="/account/login">返回</a></h3>
+            <div class="clear"></div>
+        </div>
+    </form>
+
+</div>
+<!--start-copyright-->
+<div class="copy-right">
+    <p>Copyright &copy; 2019-2020. <a id="jsl_speed_stat1" href="http://www.yunaq.com/#zid=5ccbb24645475e17f0e7d3a0"
+                                      target="_blank">知道创宇云安全，腾讯爸爸特许，护我贝拉安全</a>
+        <script src="//static.yunaq.com/static/js/stat/picture1_stat.js" charset="utf-8"
+                type="text/javascript"></script>
+    </p>
+    <p>QQ-Group1 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5anGDmK"> 伊莎贝拉粉丝应援团(官) </a></p>
+    <p>QQ-Group2 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bMYdRg"> 伊莎贝拉后援会🌟 </a></p>
+    <p>BiliBili | Weibo <a target="_blank" href="https://space.bilibili.com/2315820/"> 伊莎贝拉 |</a><a target="_blank"
+                                                                                                    href="https://weibo.com/u/2134513007">
+        粉丝应援团 </a></p>
+    <p>All rights ReVdol! check here <a href="http://www.revdol.com/" target="_blank" title="revdol!">revdol!</a></p>
+</div>
+<!--//end-copyright-->
+</body>
+<script src="/js/jQuery.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="/js/check2.js"></script>
+<script>
+    //初始化界面
+    window.onload = function ()//用window的onload事件，窗体加载完毕的时候
+    {
+        document.getElementById("imgVerify").src = "/getVerify?" + Math.random();
+    }
+
+    //获取验证码
+    function getVerify(obj) {
+        obj.src = "/getVerify?" + Math.random();
+    }
+</script>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+</html>

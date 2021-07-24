@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>福利抽奖报名</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="/css/bootstarp.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/bood.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/main.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <meta http-equiv="keywords" content="战斗吧歌姬,伊莎贝拉,后援会">
+    <meta http-equiv="description" content="战斗吧歌姬伊莎贝拉后援会应援激励系统">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="row">
+            <div class="col-xs-3">
+                <a href="/account/space">
+                    <img src="/images/icon/home.png">
+                </a>
+            </div>
+            <div class="col-xs-6">
+                福利抽奖报名（已截止）
+            </div>
+            <div class="col-xs-3">
+                <img src="/images/icon/menu.png" id="in" class="menu">
+            </div>
+        </div>
+        <div id="div1" class="navbar-hidden"><a
+                href="/shop/prize">兑换屋</a></div>
+        <div id="div2" class="navbar-hidden"><a
+                href="/point/details">贝化值明细</a></div>
+        <div id="div3" class="navbar-hidden"><a
+                href="/notice/notice">系统公告</a></div>
+        <div id="div4" class="navbar-hidden"><a
+                href="/account/info">个人信息</a></div>
+        <div id="div5" class="navbar-hidden"><a
+                href="/notice/talk">意见反馈</a></div>
+        <div id="div6" class="navbar-hidden"><a
+                href="/account/password">修改密码</a></div>
+        <div id="div7" class="navbar-hidden"><a
+                href="/account/logout">退出登录</a></div>
+    </div>
+
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <h2>报名已截止</h2>
+            <p style="color: #e8a626">这是炫酷的背景图</p>
+            <p></p>
+            <p style="color: #e8a626">这是炫酷的特效和框框</p>
+            <p></p>
+            <h5>不废话，说一下这是干啥的</h5>
+            <h5>年终了，想给使用贝化值系统的各位蛋仔/DD们一些福利：</h5>
+            <h5>我们将在【历史最高贝化值在5000及以上】的蛋仔中抽一名，送出【一周年贝拉亲笔签名照】一张！</h5>
+            <h5>在【历史最高贝化值在100及以上】的蛋仔中抽数名，送出墨汐手环御守一套、超会议红绿灯纪念徽章、罗兹灯箱纸一张！</h5>
+            <h5>两个抽奖均需满足在12月31日12:00前注册贝化值账号，且账号为非功能受限状态，以确保抽奖资格真实有效</h5>
+            <h5>本页面为报名页面，满足条件的蛋仔可以点击下面的按钮报名</h5>
+            <h5>本次福利将在12月31日红绿灯粉丝联合跨年活动（贝墨罗应援会联动）中现场开奖！</h5>
+            <p></p>
+            <img src="/out_images/红绿灯联合跨年活动.png">
+            <p></p>
+            <p style="color: #e8a626">唉，本来这个页面应该非常炫酷，像小程序事件那样，但是没有前端大佬啊</p>
+            <p style="color: #e8a626">这是炫酷的边界</p>
+            <p></p>
+            <h4 th:text="'我的历史最高贝化值：' + ${mymaxpoint}"></h4>
+        </div>
+
+        <div class="form-group">
+            <h5>签名照抽奖报名：5000及以上</h5>
+            <h5 th:text="'当前签名照抽奖参与人数：' + ${joinnum1}"></h5>
+            <div th:if="${flag1 eq 1}" class="form-group">
+                <button type="submit" class="btn btn-block">报名已截止，将在活动期间开奖</button>
+            </div>
+
+
+            <div th:if="${flag1 eq 2}" class="form-group">
+                <button type="submit" class="btn btn-block">您的贝化值过低，还不能参加哦</button>
+            </div>
+
+            <div th:if="${flag1 eq 3}" class="form-group">
+                <button type="submit" class="btn btn-block">贝化值账号受限，无法参与</button>
+            </div>
+
+            <form th:if="${flag1 eq 0}" method="post" action="/event/activity/nianzhongchoujiang1">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">参加抽奖，成为欧皇！</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-group">
+            <h5>周边抽奖报名：100及以上</h5>
+            <h5 th:text="'当前周边抽奖参与人数：' + ${joinnum2}"></h5>
+            <div th:if="${flag2 eq 1}" class="form-group">
+                <button type="submit" class="btn btn-block">报名已截止！将在活动期间开奖</button>
+            </div>
+
+
+            <div th:if="${flag2 eq 2}" class="form-group">
+                <button type="submit" class="btn btn-block">您的贝化值过低，还不能参加哦</button>
+            </div>
+
+            <div th:if="${flag2 eq 3}" class="form-group">
+                <button type="submit" class="btn btn-block">贝化值账号受限，无法参与</button>
+            </div>
+
+            <form th:if="${flag2 eq 0}" method="post" action="/event/activity/nianzhongchoujiang2">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">参加抽奖，准备偷渡！</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-4">
+    </div>
+</div>
+</body>
+
+<script src="/js/jQuery.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script language="javascript">
+    // <!--//防止页面后退-->
+    // <!--history.pushState(null, null, document.URL);-->
+    // <!--window.addEventListener('popstate', function () {-->
+    // <!--history.pushState(null, null, document.URL);-->
+    // <!--});-->
+</script>
+</html>

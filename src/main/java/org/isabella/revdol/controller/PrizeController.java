@@ -70,19 +70,20 @@ public class PrizeController {
                     if (prize != null) {
                         if (prize.getId() == id) {
                             String cannot = "";
-                            account.hiddenadd();
                             Order order = new Order();
                             order.setQq_id(qq);
                             order.setPrize_id(prize.getId());
                             order.setPoint(prize.getPoint());
-                            order.setAddress(account.getAddress());
-                            if (order.getAddress() == null || order.getAddress().equals("")) {
-                                cannot = "兑换地址呢？请先填写兑换地址，gkd";
-                                model.addAttribute("prize", prize);
-                                model.addAttribute("account", account);
-                                model.addAttribute("cannot", cannot);
-                                return "shop/confirm";
-                            }
+//                            order.setAddress(account.getAddress());
+                            order.setAddress("已停止记录，发货时QQ联系");
+                            account.hiddenadd();
+//                            if (order.getAddress() == null || order.getAddress().equals("")) {
+//                                cannot = "兑换地址呢？请先填写兑换地址，gkd";
+//                                model.addAttribute("prize", prize);
+//                                model.addAttribute("account", account);
+//                                model.addAttribute("cannot", cannot);
+//                                return "shop/confirm";
+//                            }
                             order.setNumber(1);
                             order.setPrize_name(prize.getPrize_name());
                             if (prize.getQuantity() >= 1) {
@@ -93,6 +94,7 @@ public class PrizeController {
                                     Pointlog pointlog = new Pointlog();
                                     pointlog.setOperated_qq_id(qq);
                                     pointlog.setOperate_point(order.getPoint());
+                                    pointlog.setType(4);
                                     pointlog.setOperate_type(3);
                                     pointlog.setDescription("贝化值兑换奖品：" + order.getPrize_name());
                                     account.setState(3);

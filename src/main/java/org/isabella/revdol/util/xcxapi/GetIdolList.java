@@ -3,7 +3,6 @@ package org.isabella.revdol.util.xcxapi;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,4 +51,22 @@ public class GetIdolList {
         return (JSONObject) Net.get(url,params,method,backType,0);
     }
 
+    public static JSONObject getIdolforums(int page) {
+        String url = "https://starmicro.happyelements.cn/v1/idol/idolforums";
+        Map params = new HashMap();//请求参数
+        params.put("idol_id",4);
+        params.put("page",page);
+        String backType = "object";
+        String method = "GET"; //请求http方法
+        return (JSONObject) Net.get(url,params,method,backType,0);
+    }
+
+    public static JSONObject getforum(int id) {
+        String url = "https://starmicro.happyelements.cn/v1/idol/forumdetail";
+        Map params = new HashMap();//请求参数
+        params.put("id",id);
+        String backType = "object";
+        String method = "GET"; //请求http方法
+        return (JSONObject) Net.get(url,params,method,backType,0);
+    }
 }

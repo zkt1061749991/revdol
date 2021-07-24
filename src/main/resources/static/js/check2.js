@@ -30,10 +30,10 @@ $().ready(function () {
         },
         messages: {
             new_qq: {
-                required: "请输入QQ号",
-                digits: "请输入合法的QQ号",
-                minlength: "请输入合法的QQ号",
-                maxlength: "请输入合法的QQ号"
+                required: "请输入账号",
+                digits: "请输入合法的账号",
+                minlength: "请输入合法的账号",
+                maxlength: "请输入合法的账号"
             },
             new_password: {
                 required: "请设置查询密码",

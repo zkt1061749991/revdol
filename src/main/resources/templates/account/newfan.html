@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>系统注册</title>
+    <title>贝化值系统</title>
     <link href="/css/style.css" rel='stylesheet' type='text/css'/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -15,19 +15,21 @@
     <!--//webfonts-->
 </head>
 <body>
-<h1>ReVdol!伊莎贝拉后援会</h1>
+<h6><img src="/images/logo.jpg" class="img-responsive" alt=""></h6>
 <div class="app-location">
     <h2>贝化值系统注册</h2>
     <div class="line"><span></span>
         <div th:text="${errorString}" style="color: red"></div>
     </div>
-    <div class="location"><h3>注册须知</h3><h6 style="color: #78797C">目前不开放自定义账号id，账号必须为QQ号码，否则无法正常获取贝化值；密码仅支持六位数字</h6>
+    <div class="location"><h3>注册须知</h3>
+
     </div>
+    <img th:src="'/out_images/zcxz.jpg'">
 
     <form id="newfanForm" action="/account/newfan" method="post">
         <div>
             <label for="new_qq"></label>
-            <input style="width: 90%" type="text" id="new_qq" name="new_qq" placeholder="请输入您的QQ号码">
+            <input style="width: 90%" type="text" id="new_qq" name="new_qq" placeholder="请输入账号">
         </div>
         <div>
             <label for="new_password"></label>
@@ -51,15 +53,20 @@
 </div>
 <!--start-copyright-->
 <div class="copy-right">
-    <p>Copyright &copy; 2019. <a id="jsl_speed_stat1" href="http://www.yunaq.com/#zid=5ccbb24645475e17f0e7d3a0"
-                                 target="_blank">知道创宇云安全，腾讯爸爸特许，护我贝拉安全</a>
-        <script src="//static.yunaq.com/static/js/stat/picture1_stat.js" charset="utf-8"
-                type="text/javascript"></script>
-    </p>
-
-    <p>QQ-Group <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bMYdRg"> 伊莎贝拉后援会🌟 </a></p>
-    <p>BiliBili <a target="_blank" href="https://space.bilibili.com/2315820/"> 伊莎贝拉粉丝应援会 </a></p>
-    <p>All rights ReVdol! check here <a href="http://www.revdol.com/" target="_blank" title="revdol!">revdol!</a></p>
+    <div class="copy-right">
+        <p>Copyright &copy; 2019-2021. <a id="jsl_speed_stat1" href="http://www.yunaq.com/#zid=5ccbb24645475e17f0e7d3a0"
+                                          target="_blank">知道创宇云安全，腾讯爸爸特许，护我贝拉安全</a>
+            <script src="//static.yunaq.com/static/js/stat/picture1_stat.js" charset="utf-8"
+                    type="text/javascript"></script>
+        </p>
+        <p>QQ-Group1 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5anGDmK"> 伊莎贝拉粉丝应援团(官) </a></p>
+        <p>QQ-Group2 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5bMYdRg"> 伊莎贝拉后援会🌟 </a></p>
+        <p>BiliBili | Weibo <a target="_blank" href="https://space.bilibili.com/2315820/"> 伊莎贝拉 |</a><a target="_blank"
+                                                                                                        href="https://weibo.com/u/2134513007">
+            粉丝应援团 </a></p>
+        <p>All rights ReVdol! check here <a href="http://www.revdol.com/" target="_blank" title="revdol!">revdol!</a>
+        </p>
+    </div>
 </div>
 <!--//end-copyright-->
 </body>
